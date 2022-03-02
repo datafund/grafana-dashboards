@@ -8,13 +8,9 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "limit": 100,
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "showIn": 0,
-        "tags": [
-          "protocols",
-          "components",
-          "storage-incentives"
-        ],
+        "tags": ["protocols", "components", "storage-incentives"],
         "type": "tags"
       }
     ]
@@ -22,11 +18,11 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 142,
   "links": [],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -46,9 +42,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": [
-          "protocols"
-        ]
+        "tags": ["protocols"]
       },
       "pluginVersion": "7.5.5",
       "timeFrom": null,
@@ -57,7 +51,7 @@
       "type": "dashlist"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -77,9 +71,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": [
-          "components"
-        ]
+        "tags": ["components"]
       },
       "pluginVersion": "7.5.5",
       "timeFrom": null,
@@ -88,7 +80,7 @@
       "type": "dashlist"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -108,9 +100,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": [
-          "storage-incentives"
-        ]
+        "tags": ["storage-incentives"]
       },
       "pluginVersion": "7.5.5",
       "timeFrom": null,
@@ -119,7 +109,7 @@
       "type": "dashlist"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -139,9 +129,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": [
-          "beekeeper"
-        ]
+        "tags": ["beekeeper"]
       },
       "pluginVersion": "7.5.5",
       "timeFrom": null,
@@ -174,21 +162,11 @@
       "2h",
       "1d"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
     "type": "timepicker"
   },
   "timezone": "browser",
   "title": "Home",
   "uid": "L0-oG6v7k",
-  "version": 7
+  "version": 3
 }

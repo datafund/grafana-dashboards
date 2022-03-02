@@ -21,7 +21,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -34,7 +34,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Ping round-trip time duration Gauge.",
       "fieldConfig": {
         "defaults": {
@@ -108,7 +108,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Ping round-trip time duration Histogram.",
       "fieldConfig": {
         "defaults": {},
@@ -166,7 +166,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Ping round-trip time duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -225,7 +225,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Ping round-trip time duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -284,7 +284,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -297,7 +297,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of uploaded chunks.",
       "fieldConfig": {
         "defaults": {
@@ -358,7 +358,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of chunks that has been synced with the closest node.",
       "fieldConfig": {
         "defaults": {
@@ -419,7 +419,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of chunks that has not been synced with the closest node.",
       "fieldConfig": {
         "defaults": {
@@ -480,7 +480,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk upload duration Gauge.",
       "fieldConfig": {
         "defaults": {
@@ -553,7 +553,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk upload duration Histogram.",
       "fieldConfig": {
         "defaults": {},
@@ -611,7 +611,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk upload duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -670,7 +670,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk upload duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -729,7 +729,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -742,7 +742,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of uploaded chunks.",
       "fieldConfig": {
         "defaults": {
@@ -803,7 +803,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of downloaded chunks.",
       "fieldConfig": {
         "defaults": {
@@ -864,7 +864,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of chunks that has been retrieved.",
       "fieldConfig": {
         "defaults": {
@@ -925,7 +925,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of chunks that has not been retrieved.",
       "fieldConfig": {
         "defaults": {
@@ -986,7 +986,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk upload duration Gauge.",
       "fieldConfig": {
         "defaults": {
@@ -1059,7 +1059,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk upload duration Histogram.",
       "fieldConfig": {
         "defaults": {},
@@ -1117,7 +1117,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk upload duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -1176,7 +1176,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk upload duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -1234,7 +1234,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk download duration Gauge.",
       "fieldConfig": {
         "defaults": {
@@ -1307,7 +1307,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk download duration Histogram.",
       "fieldConfig": {
         "defaults": {},
@@ -1365,7 +1365,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk download duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -1424,7 +1424,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "Chunk download duration Histogram.",
       "fieldConfig": {
         "defaults": {
@@ -1497,7 +1497,7 @@
           "text": "anatol",
           "value": "anatol"
         },
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "definition": "label_values(push_time_seconds, job)",
         "description": null,
         "error": null,
@@ -1520,6 +1520,24 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": false
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },

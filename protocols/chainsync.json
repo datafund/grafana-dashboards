@@ -22,7 +22,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -35,7 +35,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "The total number of synced peers. Duplicate increments are expected for the same peer.",
       "fieldConfig": {
         "defaults": {
@@ -92,7 +92,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "The total number of peers marked as unsynced.",
       "fieldConfig": {
         "defaults": {
@@ -150,7 +150,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "The total number of invalid proofs we've received. duplicate increments are expected.",
       "fieldConfig": {
         "defaults": {
@@ -208,7 +208,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "The total number of errors we've received when asking for a proof from a peer. Duplicates increments are expected.",
       "fieldConfig": {
         "defaults": {
@@ -266,7 +266,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -327,7 +327,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -387,7 +387,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "The total time spent waiting for proofs (not per-peer but rather per cycle).",
       "fieldConfig": {
         "defaults": {
@@ -464,7 +464,7 @@
           "text": "bee-bootnode",
           "value": "bee-bootnode"
         },
-        "datasource": null,
+        "datasource": "$datasource",
         "definition": "label_values(bee_info, namespace)",
         "description": null,
         "error": null,
@@ -495,7 +495,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "$datasource",
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
         "description": null,
         "error": null,
@@ -518,6 +518,24 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": false
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },

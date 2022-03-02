@@ -17,7 +17,7 @@
         "type": "dashboard"
       },
       {
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "enable": true,
         "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) > 0",
         "hide": true,
@@ -41,7 +41,7 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -94,7 +94,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -147,7 +147,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -218,7 +218,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -287,7 +287,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -356,7 +356,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -484,7 +484,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -559,7 +559,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -661,8 +661,7 @@
       }
     },
     {
-      "datasource": "Prometheus",
-      "description": "",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -740,8 +739,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
-      "description": "",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -837,7 +835,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -928,7 +926,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -1023,7 +1021,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -1113,7 +1111,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -1213,7 +1211,7 @@
           "text": "bee-bootnode",
           "value": "bee-bootnode"
         },
-        "datasource": "Prometheus-bee",
+        "datasource": "$datasource",
         "definition": "label_values(bee_info, namespace)",
         "hide": 0,
         "includeAll": false,
@@ -1241,7 +1239,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "Prometheus-bee",
+        "datasource": "$datasource",
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
         "hide": 0,
         "includeAll": true,
@@ -1264,11 +1262,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "testnet-storage.testnet.internal",
-          "value": "testnet-storage.testnet.internal"
+          "selected": false
         },
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "definition": "label_values(kube_ingress_path{service_name=~\"$instance-debug\", namespace=\"$namespace\"}, host)",
         "hide": 2,
         "includeAll": false,
@@ -1285,6 +1281,24 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },

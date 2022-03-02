@@ -28,7 +28,7 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -126,7 +126,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -361,7 +361,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -424,7 +424,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -484,7 +484,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -544,7 +544,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "description": "This will reset every time the smoke test respawns (12h)",
       "fieldConfig": {
         "defaults": {
@@ -601,7 +601,7 @@
       "type": "gauge"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -661,7 +661,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1068,7 +1068,7 @@
           "text": "beekeeper",
           "value": "beekeeper"
         },
-        "datasource": "Prometheus-bee",
+        "datasource": "$datasource",
         "definition": "label_values(push_time_seconds, job)",
         "description": null,
         "error": null,

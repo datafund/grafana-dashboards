@@ -20,7 +20,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Shows success rate of connection attempts from Hive",
       "fieldConfig": {
         "defaults": {
@@ -75,7 +75,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Number of duplicate peer broadcasts",
       "fieldConfig": {
         "defaults": {
@@ -139,7 +139,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Peer reachability distribution",
       "fieldConfig": {
         "defaults": {
@@ -204,7 +204,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Peer unreachability distribution",
       "fieldConfig": {
         "defaults": {
@@ -281,7 +281,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Time taken for ping operation",
       "fieldConfig": {
         "defaults": {},
@@ -351,7 +351,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Time taken for failed ping operation",
       "fieldConfig": {
         "defaults": {},
@@ -420,10 +420,10 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "peter",
-          "value": "peter"
+          "text": "default",
+          "value": "default"
         },
-        "datasource": null,
+        "datasource": "$datasource",
         "definition": "label_values(bee_info, namespace)",
         "description": null,
         "error": null,
@@ -454,7 +454,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "$datasource",
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
         "description": null,
         "error": null,
@@ -477,6 +477,24 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": false
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },

@@ -25,7 +25,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -126,7 +126,7 @@
           "rgba(237, 129, 40, 0.89)",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": 3,
         "fieldConfig": {
           "defaults": {
@@ -214,7 +214,7 @@
           "#fce2de",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": 3,
         "fieldConfig": {
           "defaults": {
@@ -304,7 +304,7 @@
           "#fce2de",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": 2,
         "fieldConfig": {
           "defaults": {
@@ -392,7 +392,7 @@
           "#fce2de",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": 2,
         "fieldConfig": {
           "defaults": {
@@ -476,7 +476,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -577,7 +577,7 @@
           "rgba(237, 129, 40, 0.89)",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": null,
         "fieldConfig": {
           "defaults": {
@@ -667,7 +667,7 @@
           "#fce2de",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": 3,
         "fieldConfig": {
           "defaults": {
@@ -757,7 +757,7 @@
           "#fce2de",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": 2,
         "fieldConfig": {
           "defaults": {
@@ -847,7 +847,7 @@
           "#fce2de",
           "#d44a3a"
         ],
-        "datasource": "Prometheus",
+        "datasource": "$datasource",
         "decimals": 2,
         "fieldConfig": {
           "defaults": {
@@ -941,7 +941,7 @@
             "text": "faucet",
             "value": "faucet"
           },
-          "datasource": "Prometheus",
+          "datasource": "$datasource",
           "definition": "",
           "hide": 0,
           "includeAll": false,
@@ -967,7 +967,7 @@
             "text": "gBZZ",
             "value": "gBZZ"
           },
-          "datasource": "Prometheus",
+          "datasource": "$datasource",
           "definition": "label_values(token_balance, symbol)",
           "hide": 0,
           "includeAll": false,
@@ -985,7 +985,25 @@
           "tagsQuery": "",
           "type": "query",
           "useTags": false
-        }
+      },
+      {
+        "current": {
+          "selected": false
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
       ]
     },
     "time": {

@@ -17,7 +17,7 @@
         "type": "dashboard"
       },
       {
-        "datasource": "Prometheus-bee",
+        "datasource": "$datasource",
         "enable": true,
         "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) > 0",
         "hide": true,
@@ -42,10 +42,7 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -113,10 +110,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -182,10 +176,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -259,6 +250,7 @@
         "type": "prometheus",
         "uid": "PEB8F6B0BE743FB7E"
       },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -327,10 +319,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -418,10 +407,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -610,10 +596,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -723,6 +706,7 @@
           "type": "prometheus",
           "uid": "PEB8F6B0BE743FB7E"
         },
+        "datasource": "$datasource",
         "definition": "label_values(bee_info, namespace)",
         "hide": 0,
         "includeAll": false,
@@ -750,10 +734,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PEB8F6B0BE743FB7E"
-        },
+        "datasource": "$datasource",
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
         "hide": 0,
         "includeAll": true,
@@ -773,6 +754,24 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": false
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },

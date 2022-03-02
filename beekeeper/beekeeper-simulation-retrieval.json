@@ -21,7 +21,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -34,7 +34,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total uploaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -98,7 +98,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total not uploaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -170,7 +170,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total synced chunks",
       "fieldConfig": {
         "defaults": {
@@ -234,7 +234,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total not synced chunks",
       "fieldConfig": {
         "defaults": {
@@ -306,7 +306,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -370,7 +370,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total not downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -442,7 +442,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total correctly downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -506,7 +506,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total incorrectly downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -582,7 +582,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk upload rate per node",
       "fieldConfig": {
         "defaults": {},
@@ -682,7 +682,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk failed upload rate per node",
       "fieldConfig": {
         "defaults": {},
@@ -781,7 +781,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk sync rate per node",
       "fieldConfig": {
         "defaults": {},
@@ -881,7 +881,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk failed sync rate per node",
       "fieldConfig": {
         "defaults": {},
@@ -980,7 +980,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk download rate per node",
       "fieldConfig": {
         "defaults": {},
@@ -1079,7 +1079,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk failed download rate per node",
       "fieldConfig": {
         "defaults": {},
@@ -1178,7 +1178,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Correct chunk download rate per node",
       "fieldConfig": {
         "defaults": {},
@@ -1277,7 +1277,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Incorrect chunk download rate per node",
       "fieldConfig": {
         "defaults": {
@@ -1387,7 +1387,7 @@
         "mode": "opacity"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Upload speed",
       "fieldConfig": {
         "defaults": {},
@@ -1459,7 +1459,7 @@
         "mode": "opacity"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Sync speed",
       "fieldConfig": {
         "defaults": {},
@@ -1531,7 +1531,7 @@
         "mode": "opacity"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Download speed",
       "fieldConfig": {
         "defaults": {},
@@ -1591,7 +1591,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1604,7 +1604,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total uploaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -1668,7 +1668,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total not uploaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -1740,7 +1740,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total synced chunks",
       "fieldConfig": {
         "defaults": {
@@ -1804,7 +1804,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total not synced chunks",
       "fieldConfig": {
         "defaults": {
@@ -1876,7 +1876,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -1940,7 +1940,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total not downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -2012,7 +2012,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total correctly downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -2076,7 +2076,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Total incorrectly downloaded chunks",
       "fieldConfig": {
         "defaults": {
@@ -2152,7 +2152,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk upload rate",
       "fieldConfig": {
         "defaults": {},
@@ -2251,7 +2251,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk failed upload rate",
       "fieldConfig": {
         "defaults": {},
@@ -2350,7 +2350,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk sync rate",
       "fieldConfig": {
         "defaults": {},
@@ -2449,7 +2449,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk failed sync rate",
       "fieldConfig": {
         "defaults": {},
@@ -2548,7 +2548,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk download rate",
       "fieldConfig": {
         "defaults": {},
@@ -2647,7 +2647,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Chunk failed download rate",
       "fieldConfig": {
         "defaults": {},
@@ -2746,7 +2746,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Correct chunk download rate",
       "fieldConfig": {
         "defaults": {},
@@ -2845,7 +2845,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "$datasource",
       "description": "Incorrect chunk download rate",
       "fieldConfig": {
         "defaults": {},
@@ -2954,8 +2954,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "text": "$datasource",
+          "value": "$datasource"
         },
         "description": null,
         "error": null,
