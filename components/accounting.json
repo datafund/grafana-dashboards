@@ -3,17 +3,28 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       },
       {
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "enable": true,
-        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) > 0",
+        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) \u003e 0",
         "hide": true,
         "iconColor": "#3274D9",
         "limit": 100,
@@ -27,18 +38,21 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 49,
-  "iteration": 1635410427718,
+  "id": 127,
+  "iteration": 1656455553236,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -78,7 +92,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -88,12 +102,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "increase(bee_accounting_credit_events_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "credit ({{pod}})",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "increase(bee_accounting_debit_events_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "debit ({{pod}})",
@@ -101,9 +121,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "events",
       "tooltip": {
         "shared": true,
@@ -112,48 +130,37 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "thresholds"
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
           },
-          "links": [
-            {
-              "title": "",
-              "url": ""
-            }
-          ],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -167,8 +174,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "sci"
+          }
         },
         "overrides": []
       },
@@ -180,20 +186,19 @@
       },
       "id": 34,
       "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+        "footer": {
           "fields": "",
-          "values": false
+          "reducer": ["sum"],
+          "show": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_accounting_total_credited_amount{namespace=\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -201,6 +206,9 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_accounting_total_debited_amount{namespace=\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -208,17 +216,17 @@
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "totals",
-      "type": "gauge"
+      "type": "table"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -251,7 +259,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -261,6 +269,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "bee_swap_available_balance{namespace=\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -268,9 +279,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "available balance",
       "tooltip": {
         "shared": true,
@@ -279,33 +288,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "currencyBTC",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -313,7 +313,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -353,7 +355,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -363,12 +365,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "increase(bee_accounting_accounting_blocks_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "blocks ({{pod}})",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "increase(bee_accounting_accounting_disconnects_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "disconnects ({{pod}})",
@@ -376,9 +384,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "accounting",
       "tooltip": {
         "shared": true,
@@ -387,55 +393,43 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 36,
   "style": "dark",
-  "tags": [
-    "components"
-  ],
+  "tags": ["components"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "bee-storage",
           "value": "bee-storage"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -451,7 +445,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -463,10 +456,10 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "instance",
@@ -482,7 +475,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -491,15 +483,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -527,5 +517,6 @@
   "timezone": "",
   "title": "Accounting",
   "uid": "7zF-8nKnz",
-  "version": 2
+  "version": 5,
+  "weekStart": ""
 }

@@ -3,28 +3,68 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 48,
-  "iteration": 1634802449901,
+  "id": 145,
+  "iteration": 1656455277547,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -36,11 +76,10 @@
               },
               {
                 "color": "red",
-                "value": 0.1
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -52,23 +91,22 @@
       },
       "id": 46,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "1-(bee_handshake_syn_ack_tx{namespace=~\"$namespace\", instance=~\"$instance\"}-bee_handshake_syn_ack_tx_failed{namespace=~\"$namespace\", instance=~\"$instance\"})/bee_handshake_syn_ack_tx{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -76,18 +114,46 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "SYN-ACK TX Fail Rate",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -99,11 +165,10 @@
               },
               {
                 "color": "red",
-                "value": 0.1
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -115,23 +180,22 @@
       },
       "id": 58,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "1-(bee_handshake_ack_rx{namespace=~\"$namespace\", instance=~\"$instance\"}-bee_handshake_ack_rx_failed{namespace=~\"$namespace\", instance=~\"$instance\"})/bee_handshake_ack_rx{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -139,17 +203,45 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "ACK RX Fail Rate",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -161,11 +253,10 @@
               },
               {
                 "color": "red",
-                "value": 0.1
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -177,23 +268,22 @@
       },
       "id": 48,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "1-(bee_handshake_syn_rx{namespace=~\"$namespace\", instance=~\"$instance\"}-bee_handshake_syn_rx_failed{namespace=~\"$namespace\", instance=~\"$instance\"})/bee_handshake_syn_rx{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -202,27 +292,24 @@
         }
       ],
       "title": "SYN RX Fail Rate",
-      "type": "stat"
+      "type": "timeseries"
     }
   ],
-  "schemaVersion": 27,
+  "schemaVersion": 36,
   "style": "dark",
-  "tags": [
-    "protocols"
-  ],
+  "tags": ["protocols"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -238,7 +325,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -250,47 +336,25 @@
           "text": "bee-0-0",
           "value": "bee-0-0"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "instance",
         "multi": false,
         "name": "instance",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "bee-0-0",
-            "value": "bee-0-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-1-0",
-            "value": "bee-1-0"
-          },
-          {
-            "selected": false,
-            "text": "bootnode-0-0",
-            "value": "bootnode-0-0"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -299,15 +363,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -323,5 +385,6 @@
   "timezone": "",
   "title": "Handshake",
   "uid": "_-lz--dnz",
-  "version": 3
+  "version": 4,
+  "weekStart": ""
 }

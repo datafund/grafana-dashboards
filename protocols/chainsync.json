@@ -3,26 +3,38 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "description": "ChainSync protocol dashboard",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 19,
-  "iteration": 1635343339303,
+  "id": 144,
+  "iteration": 1656455320914,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -31,16 +43,54 @@
       },
       "id": 34,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Chain Sync",
       "type": "row"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "The total number of synced peers. Duplicate increments are expected for the same peer.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -49,10 +99,13 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
@@ -64,21 +117,22 @@
       },
       "id": 38,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
+        "legend": {
           "calcs": [],
-          "fields": "",
-          "values": false
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_chainsyncer_synced_peers_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -86,26 +140,58 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Synced Peers",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "The total number of peers marked as unsynced.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-red",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -120,23 +206,22 @@
       },
       "id": 42,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_chainsyncer_unsynced_peers_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -144,26 +229,58 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Unsynced Peers",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "The total number of invalid proofs we've received. duplicate increments are expected.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-red",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -178,23 +295,22 @@
       },
       "id": 32,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_chainsyncer_invalid_proof_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -202,26 +318,58 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Invalid Proof",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "The total number of errors we've received when asking for a proof from a peer. Duplicates increments are expected.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-red",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -236,23 +384,22 @@
       },
       "id": 36,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_chainsyncer_peer_error_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -260,18 +407,46 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Peer Errors",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -286,8 +461,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -299,21 +473,22 @@
       },
       "id": 69,
       "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_chainsyncer_positive_proofs{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -321,18 +496,46 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Positive proofs",
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -347,8 +550,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -360,20 +562,22 @@
       },
       "id": 68,
       "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_chainsyncer_synced_peers_count{namespace=~\"$namespace\", instance=~\"$instance\"}/(bee_chainsyncer_peer_error_count{namespace=~\"$namespace\", instance=~\"$instance\"}+bee_chainsyncer_synced_peers_count{namespace=~\"$namespace\", instance=~\"$instance\"})",
           "interval": "",
@@ -381,18 +585,47 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Positive proofs percentage (total)",
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "description": "The total time spent waiting for proofs (not per-peer but rather per cycle).",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -404,11 +637,10 @@
               },
               {
                 "color": "red",
-                "value": 1000
+                "value": 80
               }
             ]
-          },
-          "unit": "dtdurationms"
+          }
         },
         "overrides": []
       },
@@ -420,54 +652,48 @@
       },
       "id": 67,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
-          "expr": "increase(bee_chainsyncer_total_time_waiting{namespace=~\"$namespace\", instance=~\"$instance\"}[1m])/1000000",
+          "expr": "increase(bee_chainsyncer_total_time_waiting{namespace=~\"$namespace\", instance=~\"$instance\"}[5m])/1000000",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Waiting",
-      "type": "stat"
+      "type": "timeseries"
     }
   ],
-  "schemaVersion": 27,
+  "schemaVersion": 36,
   "style": "dark",
-  "tags": [
-    "protocols"
-  ],
+  "tags": ["protocols"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "bee-bootnode",
           "value": "bee-bootnode"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -483,7 +709,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -495,10 +720,10 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "instance",
@@ -514,7 +739,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -523,15 +747,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -547,5 +769,6 @@
   "timezone": "",
   "title": "ChainSync",
   "uid": "LN6My1O7k",
-  "version": 2
+  "version": 4,
+  "weekStart": ""
 }

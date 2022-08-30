@@ -3,17 +3,28 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       },
       {
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "enable": true,
-        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) > 0",
+        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) \u003e 0",
         "hide": true,
         "iconColor": "#3274D9",
         "limit": 100,
@@ -27,11 +38,12 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 48,
-  "iteration": 1635336884663,
+  "id": 149,
+  "iteration": 1656455463333,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {
@@ -40,7 +52,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -76,7 +91,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -90,17 +105,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
-          "expr": "increase(bee_retrieval_peer_request_count{namespace=~\"$namespace\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(bee_retrieval_peer_request_count{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "outgoing requests (chunks)",
       "tooltip": {
         "shared": true,
@@ -109,9 +125,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -119,25 +133,18 @@
         {
           "$$hashKey": "object:309",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -147,7 +154,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -183,7 +193,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -197,17 +207,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
-          "expr": "rate(bee_retrieval_peer_request_count{namespace=~\"$namespace\",instance=~\"$instance\"}[1m])",
+          "expr": "rate(bee_retrieval_peer_request_count{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "outgoing requests (rate/sec)",
       "tooltip": {
         "shared": true,
@@ -216,9 +227,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -226,25 +235,18 @@
         {
           "$$hashKey": "object:309",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -254,7 +256,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -290,7 +295,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -304,17 +309,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
-          "expr": "increase(bee_retrieval_total_retrieved{namespace=~\"$namespace\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(bee_retrieval_total_retrieved{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "retrieved (chunks)",
       "tooltip": {
         "shared": true,
@@ -323,9 +329,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -333,25 +337,18 @@
         {
           "$$hashKey": "object:309",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -361,7 +358,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -397,7 +397,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -411,17 +411,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
-          "expr": "rate(bee_retrieval_total_retrieved{namespace=~\"$namespace\",instance=~\"$instance\"}[1m])",
+          "expr": "rate(bee_retrieval_total_retrieved{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "retrieved (bytes/sec)",
       "tooltip": {
         "shared": true,
@@ -430,9 +431,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -440,47 +439,37 @@
         {
           "$$hashKey": "object:309",
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
-  "refresh": false,
-  "schemaVersion": 27,
+  "refresh": "",
+  "schemaVersion": 36,
   "style": "dark",
-  "tags": [
-    "protocols"
-  ],
+  "tags": ["protocols"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "bee-bootnode",
           "value": "bee-bootnode"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -496,7 +485,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -508,10 +496,10 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "instance",
@@ -527,7 +515,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -536,15 +523,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -572,5 +557,6 @@
   "timezone": "",
   "title": "Retrieval",
   "uid": "qRpzaWKnz",
-  "version": 2
+  "version": 4,
+  "weekStart": ""
 }

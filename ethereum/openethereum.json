@@ -7,7 +7,7 @@
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 59,
+  "id": 140,
   "iteration": 1639060107953,
   "links": [],
   "liveNow": false,
@@ -65,9 +65,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
@@ -129,9 +127,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
@@ -157,9 +153,7 @@
           "options": {
             "includeTimeField": false,
             "mode": "seriesToRows",
-            "reducers": [
-              "max"
-            ]
+            "reducers": ["max"]
           }
         }
       ],
@@ -237,9 +231,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -1678,5 +1670,5 @@
   "timezone": "",
   "title": "OpenEthereum",
   "uid": "fH2SyJiMz",
-  "version": 2
+  "version": 4
 }

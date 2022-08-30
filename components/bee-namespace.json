@@ -7,21 +7,24 @@
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 8,
-  "iteration": 1634802086266,
+  "id": 130,
+  "iteration": 1649628408700,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -34,7 +37,9 @@
       "type": "row"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -67,16 +72,14 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "expr": "sum(bee_libp2p_created_connection_count{namespace=\"$namespace\"})/count(bee_libp2p_created_connection_count{namespace=\"$namespace\"})",
@@ -85,13 +88,13 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "libp2p created connection per bee node",
       "type": "stat"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -124,16 +127,14 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "expr": "sum(bee_libp2p_handled_connection_count{namespace=\"$namespace\"})/count(bee_libp2p_handled_connection_count{namespace=\"$namespace\"})",
@@ -142,14 +143,13 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "libp2p handled connection per bee node",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -158,11 +158,12 @@
           "decimals": 2,
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "",
-              "type": 1,
-              "value": ""
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -185,7 +186,6 @@
         "y": 1
       },
       "id": 6,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -194,9 +194,7 @@
         "justifyMode": "center",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -205,7 +203,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "expr": "sum(time() - bee_process_start_time_seconds{namespace=\"$namespace\"})/count(bee_process_start_time_seconds{namespace=\"$namespace\"})",
@@ -215,14 +213,13 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "average uptime per bee node",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -230,11 +227,12 @@
           },
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "",
-              "type": 1,
-              "value": ""
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -261,7 +259,6 @@
         "y": 1
       },
       "id": 11,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -270,16 +267,14 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "expr": "sum(kube_pod_container_status_restarts_total{namespace=\"$namespace\", container=\"bee\"})/count(kube_pod_container_status_restarts_total{namespace=\"$namespace\", container=\"bee\"})",
@@ -288,14 +283,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "average restarts per bee node",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -303,11 +298,12 @@
           },
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "",
-              "type": 1,
-              "value": ""
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -334,7 +330,6 @@
         "y": 1
       },
       "id": 10,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -343,9 +338,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
@@ -354,23 +347,28 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "expr": "bee_info{namespace=\"$namespace\",pod=\"bee-0\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "_rIV4Vh7k"
+          },
+          "exemplar": true,
+          "expr": "bee_info{namespace=\"$namespace\",pod=\"bee-1-1-0\"}",
           "interval": "",
           "legendFormat": "{{version}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "bee version (bee-0)",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -378,11 +376,12 @@
           },
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "",
-              "type": 1,
-              "value": ""
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -409,7 +408,6 @@
         "y": 3
       },
       "id": 12,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -418,9 +416,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
@@ -429,23 +425,28 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
-          "expr": "go_info{namespace=\"$namespace\",pod=\"bee-0\"}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "_rIV4Vh7k"
+          },
+          "exemplar": true,
+          "expr": "go_info{namespace=\"$namespace\",pod=\"bee-1-1-0\"}",
           "interval": "",
           "legendFormat": "{{version}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "go version (bee-0)",
       "type": "stat"
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -462,7 +463,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -497,7 +500,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -516,9 +519,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "error logs increase over 1h",
       "tooltip": {
         "shared": false,
@@ -527,9 +528,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -537,36 +536,31 @@
         {
           "$$hashKey": "object:1496",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1497",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "links": [],
@@ -591,6 +585,11 @@
       },
       "id": 54,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
@@ -600,8 +599,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
-      "repeat": null,
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
@@ -654,8 +652,6 @@
           "refId": "E"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "logs",
       "transformations": [
         {
@@ -689,7 +685,9 @@
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -706,7 +704,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -741,7 +741,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -760,9 +760,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "cpu",
       "tooltip": {
         "shared": false,
@@ -771,9 +769,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -781,36 +777,32 @@
         {
           "$$hashKey": "object:1496",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1497",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 2,
@@ -862,7 +854,7 @@
                 "value": [
                   {
                     "title": "Drill down",
-                    "url": "./d/6581e46e4e5c7ba40a07646395ef7b23/k8s-resources-pod?var-datasource=$datasource&var-namespace=$namespace&var-pod=${__data.fields.pod}"
+                    "url": "./d/6581e46e4e5c7ba40a07646395ef7b23/k8s-resources-pod?var-datasource=$datasource\u0026var-namespace=$namespace\u0026var-pod=${__data.fields.pod}"
                   }
                 ]
               }
@@ -878,6 +870,11 @@
       },
       "id": 64,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
@@ -887,10 +884,15 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "_rIV4Vh7k"
+          },
+          "exemplar": false,
           "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "instant": true,
@@ -900,6 +902,11 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "_rIV4Vh7k"
+          },
+          "exemplar": false,
           "expr": "sum(kube_pod_container_resource_requests_cpu_cores{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -910,6 +917,11 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "_rIV4Vh7k"
+          },
+          "exemplar": false,
           "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate{namespace=\"$namespace\"}) by (pod) / sum(kube_pod_container_resource_requests_cpu_cores{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -920,6 +932,11 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "_rIV4Vh7k"
+          },
+          "exemplar": false,
           "expr": "sum(kube_pod_container_resource_limits_cpu_cores{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -930,6 +947,11 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "_rIV4Vh7k"
+          },
+          "exemplar": false,
           "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate{namespace=\"$namespace\"}) by (pod) / sum(kube_pod_container_resource_limits_cpu_cores{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -940,8 +962,6 @@
           "refId": "E"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "cpu",
       "transformations": [
         {
@@ -978,7 +998,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1013,7 +1035,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1032,9 +1054,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "memory w/o cache",
       "tooltip": {
         "shared": false,
@@ -1043,9 +1063,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1053,36 +1071,31 @@
         {
           "$$hashKey": "object:1496",
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1497",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 2,
@@ -1135,7 +1148,7 @@
                 "value": [
                   {
                     "title": "Drill down",
-                    "url": "./d/6581e46e4e5c7ba40a07646395ef7b23/k8s-resources-pod?var-datasource=$datasource&var-namespace=$namespace&var-pod=${__data.fields.pod}"
+                    "url": "./d/6581e46e4e5c7ba40a07646395ef7b23/k8s-resources-pod?var-datasource=$datasource\u0026var-namespace=$namespace\u0026var-pod=${__data.fields.pod}"
                   }
                 ]
               }
@@ -1151,6 +1164,11 @@
       },
       "id": 65,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
@@ -1160,7 +1178,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
@@ -1233,8 +1251,6 @@
           "refId": "G"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "memory",
       "transformations": [
         {
@@ -1272,7 +1288,9 @@
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1289,7 +1307,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1324,7 +1344,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1342,9 +1362,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "api requests increase over 1h",
       "tooltip": {
         "shared": false,
@@ -1353,44 +1371,37 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "links": [],
@@ -1415,10 +1426,15 @@
       },
       "id": 57,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
@@ -1443,8 +1459,6 @@
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "api",
       "transformations": [
         {
@@ -1484,7 +1498,9 @@
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1501,7 +1517,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -1541,7 +1559,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1558,9 +1576,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "storage",
       "tooltip": {
         "shared": false,
@@ -1569,44 +1585,37 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "links": [],
@@ -1632,6 +1641,11 @@
       },
       "id": 58,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
@@ -1641,7 +1655,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
@@ -1675,8 +1689,6 @@
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "storage",
       "transformations": [
         {
@@ -1718,7 +1730,9 @@
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1735,7 +1749,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -1775,7 +1791,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1794,9 +1810,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "goroutines increase over 1h",
       "tooltip": {
         "shared": false,
@@ -1805,9 +1819,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1815,25 +1827,18 @@
         {
           "$$hashKey": "object:1647",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1648",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1841,7 +1846,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -1881,7 +1888,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1899,9 +1906,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "gc cpu fraction increase over 1h",
       "tooltip": {
         "shared": false,
@@ -1910,9 +1915,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1920,36 +1923,31 @@
         {
           "$$hashKey": "object:1304",
           "format": "none",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1305",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "links": [],
@@ -1976,7 +1974,7 @@
                 "value": [
                   {
                     "title": "Drill down",
-                    "url": "./d/CgCw8jKZH/runtime-metrics?var-namespace=$namespace&var-instance=${__data.fields.pod}"
+                    "url": "./d/CgCw8jKZH/runtime-metrics?var-namespace=$namespace\u0026var-instance=${__data.fields.pod}"
                   }
                 ]
               }
@@ -1992,6 +1990,11 @@
       },
       "id": 59,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
@@ -2001,7 +2004,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
@@ -2034,8 +2037,6 @@
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "runtime",
       "transformations": [
         {
@@ -2069,7 +2070,9 @@
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2086,7 +2089,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2121,7 +2126,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2140,9 +2145,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "accounting blocks increase over 1h",
       "tooltip": {
         "shared": false,
@@ -2151,9 +2154,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2161,25 +2162,18 @@
         {
           "$$hashKey": "object:1496",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1497",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2187,7 +2181,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2222,7 +2218,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2241,9 +2237,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "accounting disconnects increase over 1h",
       "tooltip": {
         "shared": false,
@@ -2252,9 +2246,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2262,36 +2254,31 @@
         {
           "$$hashKey": "object:1496",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1497",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "links": [],
@@ -2316,6 +2303,11 @@
       },
       "id": 68,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
@@ -2325,7 +2317,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
@@ -2398,8 +2390,6 @@
           "refId": "G"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "accounting",
       "transformations": [
         {
@@ -2437,7 +2427,9 @@
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2454,7 +2446,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2489,7 +2483,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2508,9 +2502,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "total retrieval errors increase over 1h",
       "tooltip": {
         "shared": false,
@@ -2519,9 +2511,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2529,36 +2519,31 @@
         {
           "$$hashKey": "object:1496",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1497",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "links": [],
@@ -2583,6 +2568,11 @@
       },
       "id": 70,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
@@ -2592,7 +2582,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.4.3",
       "repeatDirection": "h",
       "targets": [
         {
@@ -2625,8 +2615,6 @@
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "retrieval",
       "transformations": [
         {
@@ -2656,24 +2644,24 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 35,
   "style": "dark",
-  "tags": [
-    "components"
-  ],
+  "tags": ["components"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "default",
           "value": "default"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
-        "description": null,
-        "error": null,
+        "error": {
+          "message": "Datasource  was not found"
+        },
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -2689,7 +2677,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2698,15 +2685,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2734,5 +2719,6 @@
   "timezone": "",
   "title": "Bee (Namespace)",
   "uid": "TjX_sEZMc",
-  "version": 2
+  "version": 5,
+  "weekStart": ""
 }

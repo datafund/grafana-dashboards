@@ -3,11 +3,14 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -17,9 +20,11 @@
         "type": "dashboard"
       },
       {
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "enable": true,
-        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) > 0",
+        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) \u003e 0",
         "hide": true,
         "iconColor": "#3274D9",
         "limit": 100,
@@ -35,8 +40,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 11,
-  "iteration": 1645562534463,
+  "id": 131,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -44,6 +48,37 @@
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -69,34 +104,74 @@
       },
       "id": 8,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "bee_libp2p_created_connection_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "refId": "A"
         }
       ],
       "title": "libp2p created connection",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -122,48 +197,75 @@
       },
       "id": 9,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "bee_libp2p_handled_connection_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "refId": "A"
         }
       ],
       "title": "libp2p handled connection",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "decimals": 2,
-          "mappings": [
-            {
-              "options": {
-                "": {
-                  "text": ""
-                }
-              },
-              "type": "value"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -176,8 +278,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "s"
+          }
         },
         "overrides": []
       },
@@ -191,23 +292,32 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "time() - bee_process_start_time_seconds{namespace=\"$namespace\",instance=~\"$instance\"}",
           "instant": false,
           "legendFormat": "",
@@ -215,25 +325,44 @@
         }
       ],
       "title": "uptime",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "": {
-                  "text": ""
-                }
-              },
-              "type": "value"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -246,8 +375,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "short"
+          }
         },
         "overrides": []
       },
@@ -261,48 +389,76 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "kube_pod_container_status_restarts_total{job=\"kube-state-metrics\", cluster=\"\", namespace=\"$namespace\", pod=~\"$instance\", container=~\"bee\"}",
           "legendFormat": "",
           "refId": "A"
         }
       ],
       "title": "restarts",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "": {
-                  "text": ""
-                }
-              },
-              "type": "value"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -315,8 +471,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
@@ -330,48 +485,76 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "name"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "bee_info{namespace=\"$namespace\",instance=~\"$instance\"}",
           "legendFormat": "{{version}}",
           "refId": "A"
         }
       ],
       "title": "bee version",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "": {
-                  "text": ""
-                }
-              },
-              "type": "value"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -384,8 +567,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
@@ -399,33 +581,42 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "name"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "go_info{namespace=\"$namespace\",instance=~\"$instance\"}",
           "legendFormat": "{{version}}",
           "refId": "A"
         }
       ],
       "title": "go version",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -464,18 +655,28 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "P",
+            "1": "r",
+            "2": "o",
+            "3": "m",
+            "4": "e",
+            "5": "t",
+            "6": "h",
+            "7": "e",
+            "8": "u",
+            "9": "s"
+          },
           "expr": "sum (count_over_time({namespace=\"$namespace\",pod=~\"$instance\"}|=\"panic\"[24h])) by (pod) ",
           "refId": "A"
         }
@@ -488,18 +689,37 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "": {
-                  "text": ""
-                }
-              },
-              "type": "value"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -512,8 +732,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
@@ -527,23 +746,32 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "name"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "exemplar": true,
           "expr": "bee_kademlia_reachability_status{namespace=\"$namespace\",instance=~\"$instance\"}",
           "interval": "",
@@ -552,7 +780,7 @@
         }
       ],
       "title": "reachability",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
       "aliasColors": {},
@@ -594,7 +822,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -604,27 +832,92 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "increase(bee_log_log_trace_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "traces ({{pod}})",
           "refId": "A"
         },
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "increase(bee_log_debug_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "legendFormat": "debug ({{pod}})",
           "refId": "B"
         },
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "increase(bee_log_info_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "legendFormat": "info ({{pod}})",
           "refId": "C"
         },
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "increase(bee_log_warn_count{namespace=\"$namespace\", instance=\"$instance\"}[1m])",
           "legendFormat": "warn ({{pod}})",
           "refId": "D"
         },
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "increase(bee_log_error_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "legendFormat": "error ({{pod}})",
           "refId": "E"
@@ -665,19 +958,50 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          },
-          "unit": "bytes"
+          }
         },
         "overrides": []
       },
@@ -689,23 +1013,32 @@
       },
       "id": 58,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "exemplar": true,
           "expr": "kubelet_volume_stats_capacity_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"data-$instance\"}",
           "interval": "",
@@ -713,6 +1046,19 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "exemplar": true,
           "expr": "kubelet_volume_stats_capacity_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"localstore-$instance\"}",
           "hide": false,
@@ -722,11 +1068,11 @@
         }
       ],
       "title": "Storage space capacity",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": "Prometheus",
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -735,6 +1081,23 @@
       },
       "id": 25,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "0": "P",
+            "1": "r",
+            "2": "o",
+            "3": "m",
+            "4": "e",
+            "5": "t",
+            "6": "h",
+            "7": "e",
+            "8": "u",
+            "9": "s"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "System",
       "type": "row"
     },
@@ -743,35 +1106,50 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "links": [
-            {
-              "title": "",
-              "url": ""
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
               },
               {
-                "color": "orange",
-                "value": 60
-              },
-              {
                 "color": "red",
-                "value": 90
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -783,21 +1161,32 @@
       },
       "id": 59,
       "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "exemplar": true,
           "expr": "kubelet_volume_stats_used_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"data-$instance\"}/kubelet_volume_stats_capacity_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"data-$instance\"}",
           "interval": "",
@@ -805,6 +1194,19 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "exemplar": true,
           "expr": "kubelet_volume_stats_used_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"localstore-$instance\"}/kubelet_volume_stats_capacity_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"localstore-$instance\"}",
           "hide": false,
@@ -814,11 +1216,11 @@
         }
       ],
       "title": "Storage space in use",
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": "Prometheus-bee",
+      "datasource": "$datasource",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -827,6 +1229,7 @@
       },
       "id": 19,
       "panels": [],
+      "targets": [],
       "title": "Runtime",
       "type": "row"
     },
@@ -876,7 +1279,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -886,6 +1289,19 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "go_goroutines{namespace=\"$namespace\", instance=~\"$instance\"}",
           "legendFormat": "goroutines ({{pod}})",
           "refId": "A"
@@ -976,11 +1392,37 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "go_memstats_sys_bytes{namespace=\"$namespace\", instance=~\"$instance\"}",
           "legendFormat": "used ({{pod}})",
           "refId": "A"
         },
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "go_memstats_alloc_bytes{namespace=\"$namespace\", instance=~\"$instance\"}",
           "legendFormat": "allocated ({{pod}})",
           "refId": "B"
@@ -1071,6 +1513,19 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "go_memstats_gc_cpu_fraction{namespace=\"$namespace\", instance=~\"$instance\"}",
           "legendFormat": "({{pod}})",
           "refId": "A"
@@ -1161,6 +1616,19 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
           "expr": "increase(go_gc_duration_seconds_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "legendFormat": "({{pod}})",
           "refId": "A"
@@ -1198,11 +1666,9 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 33,
+  "schemaVersion": 36,
   "style": "dark",
-  "tags": [
-    "components"
-  ],
+  "tags": ["components"],
   "templating": {
     "list": [
       {
@@ -1211,7 +1677,9 @@
           "text": "bee-bootnode",
           "value": "bee-bootnode"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
         "hide": 0,
         "includeAll": false,
@@ -1239,7 +1707,9 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
         "hide": 0,
         "includeAll": true,
@@ -1264,7 +1734,9 @@
         "current": {
           "selected": false
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(kube_ingress_path{service_name=~\"$instance-debug\", namespace=\"$namespace\"}, host)",
         "hide": 2,
         "includeAll": false,
@@ -1286,15 +1758,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1322,6 +1792,6 @@
   "timezone": "",
   "title": "Bee",
   "uid": "TjX_sEZMz",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }

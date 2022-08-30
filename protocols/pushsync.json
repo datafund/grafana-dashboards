@@ -3,11 +3,14 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -17,9 +20,11 @@
         "type": "dashboard"
       },
       {
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "enable": true,
-        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) > 0",
+        "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) \u003e 0",
         "hide": true,
         "iconColor": "#3274D9",
         "limit": 100,
@@ -34,16 +39,16 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 26,
-  "iteration": 1638187699420,
+  "id": 148,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -52,15 +57,53 @@
       },
       "id": 78,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Sending",
       "type": "row"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -72,11 +115,10 @@
               },
               {
                 "color": "red",
-                "value": 5
+                "value": 80
               }
             ]
-          },
-          "unit": "s"
+          }
         },
         "overrides": []
       },
@@ -88,21 +130,22 @@
       },
       "id": 83,
       "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "histogram_quantile(0.90, sum(rate(bee_pushsync_push_peer_time_bucket{namespace=~\"$namespace\"}[10m])) by (instance,le))",
           "interval": "",
@@ -111,14 +154,44 @@
         }
       ],
       "title": "P90 push to peer",
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -130,11 +203,10 @@
               },
               {
                 "color": "red",
-                "value": 2
+                "value": 80
               }
             ]
-          },
-          "unit": "s"
+          }
         },
         "overrides": []
       },
@@ -146,21 +218,22 @@
       },
       "id": 85,
       "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "sum by (instance) (bee_pushsync_push_peer_time_sum{namespace=~\"$namespace\"})\n/\nsum by (instance) (bee_pushsync_push_peer_time_count{namespace=~\"$namespace\"})",
           "interval": "",
@@ -169,14 +242,16 @@
         }
       ],
       "title": "Avg push to peer",
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "uid": "Prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "short"
@@ -212,7 +287,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -222,6 +297,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "Prometheus"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_push_peer_time_sum{namespace=~\"$namespace\", instance=~\"$instance\", status=\"success\"}\n/\nbee_pushsync_push_peer_time_count{namespace=~\"$namespace\", instance=~\"$instance\", status=\"success\"}",
           "format": "time_series",
@@ -233,9 +311,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Send chunk seconds - success",
       "tooltip": {
         "shared": true,
@@ -244,9 +320,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -256,8 +330,6 @@
           "format": "short",
           "label": "Sec",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -265,14 +337,11 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -280,7 +349,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "uid": "Prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "short"
@@ -316,7 +387,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -326,6 +397,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "Prometheus"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_push_peer_time_sum{namespace=~\"$namespace\", instance=~\"$instance\", status=\"failure\"}\n/\nbee_pushsync_push_peer_time_count{namespace=~\"$namespace\", instance=~\"$instance\", status=\"failure\"}",
           "format": "time_series",
@@ -337,9 +411,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Send chunk seconds - failure",
       "tooltip": {
         "shared": true,
@@ -348,9 +420,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -360,8 +430,6 @@
           "format": "short",
           "label": "Sec",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -369,14 +437,11 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -386,7 +451,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -424,7 +491,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -438,6 +505,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_total_failed_send_attempts{namespace=~\"$namespace\", instance=~\"$instance\"}\n/\nbee_pushsync_total_send_attempts{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -446,9 +516,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "send error %",
       "tooltip": {
         "shared": true,
@@ -457,9 +525,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -467,25 +533,18 @@
         {
           "$$hashKey": "object:309",
           "format": "percentunit",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -495,7 +554,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -531,7 +592,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -545,6 +606,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "increase(bee_pushsync_total_send_attempts{namespace=~\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
@@ -553,9 +617,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "sends (chunks/min)",
       "tooltip": {
         "shared": true,
@@ -564,9 +626,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -574,37 +634,58 @@
         {
           "$$hashKey": "object:309",
           "format": "none",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -614,11 +695,10 @@
               },
               {
                 "color": "red",
-                "value": 0.05
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -630,23 +710,22 @@
       },
       "id": 71,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "value_and_name"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_total_replication_error{namespace=~\"$namespace\", instance=~\"$instance\"} / bee_pushsync_total_replication_attempts{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -655,18 +734,46 @@
         }
       ],
       "title": "Neighborhood Replication Error %",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -676,11 +783,10 @@
               },
               {
                 "color": "red",
-                "value": 0.05
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -692,23 +798,22 @@
       },
       "id": 70,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "value_and_name"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_total_outgoing_errors{namespace=~\"$namespace\", instance=~\"$instance\"}\n/\nbee_pushsync_total_outgoing{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -717,20 +822,47 @@
         }
       ],
       "title": "Outgoing Errors %",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "links": [],
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -740,11 +872,10 @@
               },
               {
                 "color": "red",
-                "value": 0.1
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -756,23 +887,22 @@
       },
       "id": 66,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "value_and_name"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_total_failed_send_attempts{namespace=~\"$namespace\", instance=~\"$instance\"}\n/\nbee_pushsync_total_send_attempts{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "format": "time_series",
@@ -782,13 +912,13 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "send error rate %",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "uid": "Prometheus"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -829,18 +959,19 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "uid": "Prometheus"
+          },
           "exemplar": true,
           "expr": "sum by (instance) (bee_pusher_shallow_receipt_depth{namespace=~\"$namespace\", instance=~\"$instance\"})\n/\nsum by (instance) (bee_pusher_total_to_push{namespace=~\"$namespace\", instance=~\"$instance\"})",
           "format": "time_series",
@@ -850,14 +981,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "shallow receipt %",
       "type": "stat"
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -866,6 +997,14 @@
       },
       "id": 76,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Receiving",
       "type": "row"
     },
@@ -876,7 +1015,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -914,7 +1055,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -928,6 +1069,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "increase(bee_pushsync_total_received{namespace=~\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
@@ -936,9 +1080,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "incoming deliveries (chunks/min)",
       "tooltip": {
         "shared": true,
@@ -947,9 +1089,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -957,25 +1097,18 @@
         {
           "$$hashKey": "object:309",
           "format": "none",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -985,7 +1118,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1023,7 +1158,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1037,6 +1172,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_total_handler_errors{namespace=~\"$namespace\", instance=~\"$instance\"} / bee_pushsync_total_received{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -1045,9 +1183,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "handler error %",
       "tooltip": {
         "shared": true,
@@ -1056,9 +1192,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1066,25 +1200,18 @@
         {
           "$$hashKey": "object:309",
           "format": "percentunit",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:310",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1092,7 +1219,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "short"
@@ -1128,7 +1257,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1138,6 +1267,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_total_handler_time_sum{namespace=~\"$namespace\", instance=~\"$instance\", status=\"failure\"}/bee_pushsync_total_handler_time_count{namespace=~\"$namespace\", instance=~\"$instance\", status=\"failure\"}",
           "format": "time_series",
@@ -1148,6 +1280,9 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_total_handler_time_sum{namespace=~\"$namespace\", instance=~\"$instance\", status=\"success\"}/bee_pushsync_total_handler_time_count{namespace=~\"$namespace\", instance=~\"$instance\", status=\"success\"}",
           "hide": false,
@@ -1157,9 +1292,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Handler Time Seconds",
       "tooltip": {
         "shared": true,
@@ -1168,9 +1301,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1180,8 +1311,6 @@
           "format": "short",
           "label": "Sec",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -1189,26 +1318,51 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "percent"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1218,11 +1372,10 @@
               },
               {
                 "color": "red",
-                "value": 0.05
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -1234,23 +1387,22 @@
       },
       "id": 64,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "value"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_handler_replication_errors{namespace=~\"$namespace\", instance=~\"$instance\"}\n/\nbee_pushsync_handler_replication{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -1259,18 +1411,46 @@
         }
       ],
       "title": "Handler Replication Error %",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "percent"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1280,11 +1460,10 @@
               },
               {
                 "color": "red",
-                "value": 0.05
+                "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -1296,23 +1475,22 @@
       },
       "id": 63,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "value"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.5",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_invalid_stamps{namespace=~\"$namespace\", instance=~\"$instance\"}\n/\nbee_pushsync_total_received{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -1321,18 +1499,46 @@
         }
       ],
       "title": "Invalid Stamps  %",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1345,8 +1551,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -1358,23 +1563,22 @@
       },
       "id": 73,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "value"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_forwarder{namespace=~\"$namespace\", instance=~\"$instance\"} / bee_pushsync_total_received{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -1383,18 +1587,46 @@
         }
       ],
       "title": "Forwarder %",
-      "type": "stat"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1407,8 +1639,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -1420,23 +1651,22 @@
       },
       "id": 74,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "text": {},
-        "textMode": "value"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_pushsync_storer{namespace=~\"$namespace\", instance=~\"$instance\"} / bee_pushsync_total_received{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -1445,28 +1675,25 @@
         }
       ],
       "title": "Storer %",
-      "type": "stat"
+      "type": "timeseries"
     }
   ],
   "refresh": false,
-  "schemaVersion": 31,
+  "schemaVersion": 36,
   "style": "dark",
-  "tags": [
-    "protocols"
-  ],
+  "tags": ["protocols"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "bee-gateway",
           "value": "bee-gateway"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -1493,10 +1720,10 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "instance",
@@ -1520,15 +1747,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1556,5 +1781,6 @@
   "timezone": "",
   "title": "PushSync",
   "uid": "RzKb6ZNnz",
-  "version": 52
+  "version": 5,
+  "weekStart": ""
 }

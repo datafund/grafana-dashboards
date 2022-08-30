@@ -3,24 +3,36 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 17,
-  "iteration": 1634801743256,
+  "id": 128,
+  "iteration": 1656455614119,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -30,7 +42,8 @@
           "custom": {
             "align": "center",
             "displayMode": "color-text",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -67,12 +80,20 @@
       },
       "id": 12,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 5,
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_info{namespace=\"$namespace\",instance=~\"$instance\"}",
           "instant": true,
@@ -93,9 +114,7 @@
             "alias": "No. of nodes",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Value"
-              ],
+              "include": ["Value"],
               "reducer": "count"
             }
           }
@@ -105,9 +124,7 @@
           "options": {
             "fields": {
               "Count": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Metric": {
@@ -115,9 +132,7 @@
                 "operation": "groupby"
               },
               "No. of nodes": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               }
             }
@@ -127,7 +142,9 @@
       "type": "table"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -137,7 +154,8 @@
           "custom": {
             "align": "center",
             "displayMode": "color-text",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -174,12 +192,20 @@
       },
       "id": 13,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 5,
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "go_info{namespace=\"$namespace\",instance=~\"$instance\"}",
           "instant": true,
@@ -200,9 +226,7 @@
             "alias": "No. of nodes",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Value"
-              ],
+              "include": ["Value"],
               "reducer": "count"
             }
           }
@@ -212,9 +236,7 @@
           "options": {
             "fields": {
               "Count": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Metric": {
@@ -222,9 +244,7 @@
                 "operation": "groupby"
               },
               "No. of nodes": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               }
             }
@@ -234,11 +254,41 @@
       "type": "table"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-RdYlGr"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -265,21 +315,22 @@
       },
       "id": 9,
       "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_kademlia_total_inbound_connections{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "format": "time_series",
@@ -291,10 +342,12 @@
       ],
       "title": "Kademlia inbound connections",
       "transformations": [],
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -304,7 +357,8 @@
           "custom": {
             "align": "center",
             "displayMode": "color-text",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -353,6 +407,11 @@
       },
       "id": 14,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "frameIndex": 5,
         "showHeader": true,
         "sortBy": [
@@ -362,9 +421,12 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_restarts_total{job=\"kube-state-metrics\", cluster=\"\", namespace=\"$namespace\", pod=~\"$instance\", container=~\"bee\"}",
           "instant": true,
@@ -385,9 +447,7 @@
             "alias": "No. of nodes",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Value"
-              ],
+              "include": ["Value"],
               "reducer": "count"
             }
           }
@@ -397,9 +457,7 @@
           "options": {
             "fields": {
               "No. of nodes": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Value": {
@@ -413,11 +471,41 @@
       "type": "table"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-RdYlGr"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -444,21 +532,22 @@
       },
       "id": 10,
       "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_kademlia_total_outbound_connections{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "format": "time_series",
@@ -470,10 +559,12 @@
       ],
       "title": "Kademlia outbound connections",
       "transformations": [],
-      "type": "gauge"
+      "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -482,7 +573,8 @@
           "custom": {
             "align": "center",
             "displayMode": "gradient-gauge",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -534,11 +626,19 @@
       },
       "id": 2,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_kademlia_current_depth{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "format": "time_series",
@@ -548,8 +648,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Kademlia Depth",
       "transformations": [
         {
@@ -562,9 +660,7 @@
             "alias": "Total no. of nodes",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Value"
-              ],
+              "include": ["Value"],
               "reducer": "count"
             }
           }
@@ -574,15 +670,11 @@
           "options": {
             "fields": {
               "Count": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Total no. of nodes": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Value": {
@@ -596,7 +688,9 @@
       "type": "table"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -605,7 +699,8 @@
           "custom": {
             "align": "center",
             "displayMode": "gradient-gauge",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -657,11 +752,19 @@
       },
       "id": 5,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_kademlia_current_radius{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "format": "time_series",
@@ -671,8 +774,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Kademlia Radius",
       "transformations": [
         {
@@ -685,9 +786,7 @@
             "alias": "Total no. of nodes",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Value"
-              ],
+              "include": ["Value"],
               "reducer": "count"
             }
           }
@@ -697,15 +796,11 @@
           "options": {
             "fields": {
               "Count": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Total no. of nodes": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Value": {
@@ -719,7 +814,9 @@
       "type": "table"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -728,7 +825,8 @@
           "custom": {
             "align": "center",
             "displayMode": "gradient-gauge",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -780,11 +878,19 @@
       },
       "id": 7,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_kademlia_currently_known_peers{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "format": "time_series",
@@ -794,8 +900,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Kademlia known peers",
       "transformations": [
         {
@@ -808,9 +912,7 @@
             "alias": "Total no. of nodes",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Value"
-              ],
+              "include": ["Value"],
               "reducer": "count"
             }
           }
@@ -820,15 +922,11 @@
           "options": {
             "fields": {
               "Count": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Total no. of nodes": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Value": {
@@ -842,7 +940,9 @@
       "type": "table"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -851,7 +951,8 @@
           "custom": {
             "align": "center",
             "displayMode": "gradient-gauge",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -903,11 +1004,19 @@
       },
       "id": 6,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "exemplar": true,
           "expr": "bee_kademlia_currently_connected_peers{namespace=~\"$namespace\", instance=~\"$instance\"}",
           "format": "time_series",
@@ -917,8 +1026,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Kademlia connected peers",
       "transformations": [
         {
@@ -931,9 +1038,7 @@
             "alias": "Total no. of nodes",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Value"
-              ],
+              "include": ["Value"],
               "reducer": "count"
             }
           }
@@ -943,15 +1048,11 @@
           "options": {
             "fields": {
               "Count": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Total no. of nodes": {
-                "aggregations": [
-                  "count"
-                ],
+                "aggregations": ["count"],
                 "operation": "aggregate"
               },
               "Value": {
@@ -965,24 +1066,21 @@
       "type": "table"
     }
   ],
-  "schemaVersion": 27,
+  "schemaVersion": 36,
   "style": "dark",
-  "tags": [
-    "components"
-  ],
+  "tags": ["components"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "staging",
           "value": "staging"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info, namespace)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -998,7 +1096,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1010,132 +1107,25 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "$datasource",
+        "datasource": {
+          "uid": "$datasource"
+        },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "instance",
         "multi": false,
         "name": "instance",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "bee-0-0",
-            "value": "bee-0-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-1-0",
-            "value": "bee-1-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-10-0",
-            "value": "bee-10-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-11-0",
-            "value": "bee-11-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-12-0",
-            "value": "bee-12-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-13-0",
-            "value": "bee-13-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-14-0",
-            "value": "bee-14-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-15-0",
-            "value": "bee-15-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-16-0",
-            "value": "bee-16-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-17-0",
-            "value": "bee-17-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-18-0",
-            "value": "bee-18-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-19-0",
-            "value": "bee-19-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-2-0",
-            "value": "bee-2-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-3-0",
-            "value": "bee-3-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-4-0",
-            "value": "bee-4-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-5-0",
-            "value": "bee-5-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-6-0",
-            "value": "bee-6-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-7-0",
-            "value": "bee-7-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-8-0",
-            "value": "bee-8-0"
-          },
-          {
-            "selected": false,
-            "text": "bee-9-0",
-            "value": "bee-9-0"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1144,15 +1134,13 @@
         "current": {
           "selected": false
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1168,5 +1156,6 @@
   "timezone": "",
   "title": "Aggregator",
   "uid": "fB-iW5Hnz",
-  "version": 3
+  "version": 5,
+  "weekStart": ""
 }
