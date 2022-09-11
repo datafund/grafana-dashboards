@@ -21,7 +21,8 @@
       },
       {
         "datasource": {
-          "uid": "$datasource"
+          "type": "prometheus",
+          "uid": "prometheus"
         },
         "enable": true,
         "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) \u003e 0",
@@ -98,7 +99,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 12,
         "x": 0,
         "y": 0
       },
@@ -131,6 +132,8 @@
             "9": "c"
           },
           "expr": "bee_libp2p_created_connection_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
+          "legendFormat": "{{instance}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -138,7 +141,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -179,10 +185,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -191,8 +193,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
-        "x": 6,
+        "w": 12,
+        "x": 12,
         "y": 0
       },
       "id": 9,
@@ -224,6 +226,8 @@
             "9": "c"
           },
           "expr": "bee_libp2p_handled_connection_count{namespace=~\"$namespace\", instance=~\"$instance\"}",
+          "legendFormat": "{{instance}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -231,7 +235,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -284,9 +291,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 3,
-        "x": 12,
-        "y": 0
+        "w": 4,
+        "x": 0,
+        "y": 6
       },
       "id": 6,
       "links": [],
@@ -320,7 +327,7 @@
           },
           "expr": "time() - bee_process_start_time_seconds{namespace=\"$namespace\",instance=~\"$instance\"}",
           "instant": false,
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -328,7 +335,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -381,9 +391,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 2,
-        "x": 15,
-        "y": 0
+        "w": 4,
+        "x": 4,
+        "y": 6
       },
       "id": 11,
       "links": [],
@@ -416,7 +426,8 @@
             "9": "c"
           },
           "expr": "kube_pod_container_status_restarts_total{job=\"kube-state-metrics\", cluster=\"\", namespace=\"$namespace\", pod=~\"$instance\", container=~\"bee\"}",
-          "legendFormat": "",
+          "legendFormat": "{{pod}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -476,10 +487,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 6,
         "w": 4,
-        "x": 17,
-        "y": 0
+        "x": 8,
+        "y": 6
       },
       "id": 10,
       "links": [],
@@ -518,6 +529,95 @@
       ],
       "title": "bee version",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "string"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 12,
+        "y": 6
+      },
+      "id": 56,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "bee_kademlia_reachability_status{namespace=\"$namespace\",instance=~\"$instance\"}",
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "reachability",
+      "type": "stat"
     },
     {
       "datasource": "$datasource",
@@ -572,10 +672,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 6,
         "w": 3,
-        "x": 21,
-        "y": 0
+        "x": 16,
+        "y": 6
       },
       "id": 12,
       "links": [],
@@ -641,10 +741,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 17,
-        "y": 3
+        "h": 6,
+        "w": 5,
+        "x": 19,
+        "y": 6
       },
       "id": 57,
       "links": [],
@@ -719,6 +819,7 @@
               "mode": "off"
             }
           },
+          "links": [],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -732,7 +833,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -800,26 +902,19 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 12
       },
-      "hiddenSeries": false,
       "id": 15,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
       "percentage": false,
       "pluginVersion": "9.0.5",
@@ -923,35 +1018,8 @@
           "refId": "E"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "log messages",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "timeseries"
     },
     {
       "datasource": "$datasource",
@@ -1009,7 +1077,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 20
       },
       "id": 58,
       "options": {
@@ -1077,7 +1145,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 26
       },
       "id": 25,
       "panels": [],
@@ -1157,7 +1225,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 27
       },
       "id": 59,
       "options": {
@@ -1225,11 +1293,28 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 42
       },
       "id": 19,
       "panels": [],
-      "targets": [],
+      "targets": [
+        {
+          "datasource": {
+            "0": "$",
+            "1": "d",
+            "10": "e",
+            "2": "a",
+            "3": "t",
+            "4": "a",
+            "5": "s",
+            "6": "o",
+            "7": "u",
+            "8": "r",
+            "9": "c"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Runtime",
       "type": "row"
     },
@@ -1241,42 +1326,80 @@
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "log": 2,
+              "type": "log"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "links": [
             {
               "targetBlank": true,
               "title": "pprof",
               "url": "http://${__field.labels.pod}-debug.${domain}/debug/pprof"
             }
-          ]
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 43
       },
-      "hiddenSeries": false,
       "id": 20,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
       "percentage": false,
       "pluginVersion": "9.0.5",
@@ -1303,39 +1426,13 @@
             "9": "c"
           },
           "expr": "go_goroutines{namespace=\"$namespace\", instance=~\"$instance\"}",
+          "interval": "",
           "legendFormat": "goroutines ({{pod}})",
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "goroutines",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "timeseries"
     },
     {
       "aliasColors": {},
@@ -1360,7 +1457,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 51
       },
       "hiddenSeries": false,
       "id": 21,
@@ -1382,7 +1479,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1481,7 +1578,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 53
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 22,
@@ -1503,7 +1600,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.0.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1569,51 +1666,76 @@
       "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "links": [
             {
               "title": "",
               "url": ""
             }
-          ]
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 53
+        "y": 59
       },
-      "hiddenSeries": false,
       "id": 23,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "8.3.1",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "9.0.1",
       "targets": [
         {
           "datasource": {
@@ -1634,35 +1756,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "gc rate",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percentunit",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
+      "title": "gc rate (1m)",
+      "type": "timeseries"
     }
   ],
   "refresh": "",
@@ -1673,7 +1768,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "bee-bootnode",
           "value": "bee-bootnode"
         },
@@ -1708,6 +1803,7 @@
           "value": "$__all"
         },
         "datasource": {
+          "type": "prometheus",
           "uid": "$datasource"
         },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
@@ -1792,6 +1888,6 @@
   "timezone": "",
   "title": "Bee",
   "uid": "TjX_sEZMz",
-  "version": 6,
+  "version": 8,
   "weekStart": ""
 }

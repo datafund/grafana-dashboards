@@ -20,9 +20,7 @@
         "type": "dashboard"
       },
       {
-        "datasource": {
-          "uid": "$datasource"
-        },
+        "datasource": "$datasource",
         "enable": true,
         "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) \u003e 0",
         "hide": true,
@@ -50,9 +48,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "$datasource"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -102,7 +98,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
+          "datasource": "$datasource",
             "uid": "$datasource"
           },
           "expr": "increase(bee_accounting_credit_events_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
@@ -111,7 +107,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
+          "datasource": "$datasource",
             "uid": "$datasource"
           },
           "expr": "increase(bee_accounting_debit_events_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
@@ -151,9 +147,7 @@
       }
     },
     {
-      "datasource": {
-        "uid": "$datasource"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -191,12 +185,17 @@
           "reducer": ["sum"],
           "show": false
         },
-        "showHeader": true
+        "showHeader": true,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
       },
       "pluginVersion": "9.0.2",
       "targets": [
         {
-          "datasource": {
+          "datasource": "$datasource",
             "uid": "$datasource"
           },
           "exemplar": true,
@@ -206,7 +205,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
+          "datasource": "$datasource",
             "uid": "$datasource"
           },
           "exemplar": true,
@@ -224,9 +223,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "$datasource"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -269,7 +266,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
+          "datasource": "$datasource",
             "uid": "$datasource"
           },
           "expr": "bee_swap_available_balance{namespace=\"$namespace\", instance=~\"$instance\"}",
@@ -313,9 +310,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "$datasource"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "links": [
@@ -365,7 +360,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
+          "datasource": "$datasource",
             "uid": "$datasource"
           },
           "expr": "increase(bee_accounting_accounting_blocks_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
@@ -374,7 +369,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
+          "datasource": "$datasource",
             "uid": "$datasource"
           },
           "expr": "increase(bee_accounting_accounting_disconnects_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
@@ -412,6 +407,852 @@
       "yaxis": {
         "align": false
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 23
+      },
+      "hiddenSeries": false,
+      "id": 56,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_disconnects_reconnect_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "disconnects_reconnect_count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 23
+      },
+      "hiddenSeries": false,
+      "id": 53,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_disconnects_enforce_refresh_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "credit ({{pod}})",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "disconnects_enforce_refresh_count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 35
+      },
+      "hiddenSeries": false,
+      "id": 54,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_disconnects_ghost_overdraw_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "ghost_overdraw_count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 35
+      },
+      "hiddenSeries": false,
+      "id": 55,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_disconnects_overdraw_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "disconnects_overdraw_count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "hiddenSeries": false,
+      "id": 58,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_refreshment_below_expected{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "F"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "refreshment_below_expected",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 47
+      },
+      "hiddenSeries": false,
+      "id": 57,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_refreshment_above_expected{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "refreshment_above_expected",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 59
+      },
+      "hiddenSeries": false,
+      "id": 61,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_time_out_of_sync_recent{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "I"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "time_out_of_sync_recent",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 59
+      },
+      "hiddenSeries": false,
+      "id": 60,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_time_out_of_sync_interval{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "H"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "time_out_of_sync_interval",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "links": [
+            {
+              "title": "",
+              "url": ""
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 71
+      },
+      "hiddenSeries": false,
+      "id": 59,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "increase(bee_accounting_time_out_of_sync_alleged{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "debit ({{pod}})",
+          "refId": "G"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "time_out_of_sync_alleged",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
     }
   ],
   "refresh": false,
@@ -423,12 +1264,10 @@
       {
         "current": {
           "selected": false,
-          "text": "bee-storage",
-          "value": "bee-storage"
+          "text": "bee-gateway",
+          "value": "bee-gateway"
         },
-        "datasource": {
-          "uid": "$datasource"
-        },
+        "datasource": "$datasource",
         "definition": "label_values(bee_info, namespace)",
         "hide": 0,
         "includeAll": false,
@@ -456,9 +1295,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": {
-          "uid": "$datasource"
-        },
+        "datasource": "$datasource",
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
         "hide": 0,
         "includeAll": true,
@@ -498,8 +1335,8 @@
     ]
   },
   "time": {
-    "from": "now-1h",
-    "to": "now"
+    "from": "2022-05-25T07:38:14.293Z",
+    "to": "2022-05-25T07:42:22.131Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -517,6 +1354,6 @@
   "timezone": "",
   "title": "Accounting",
   "uid": "7zF-8nKnz",
-  "version": 5,
+  "version": 7,
   "weekStart": ""
 }

@@ -21,6 +21,7 @@
       },
       {
         "datasource": {
+          "type": "prometheus",
           "uid": "$datasource"
         },
         "enable": true,
@@ -119,10 +120,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -130,8 +127,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 13,
-        "w": 9,
+        "h": 12,
+        "w": 12,
         "x": 0,
         "y": 1
       },
@@ -228,9 +225,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 13,
-        "w": 15,
-        "x": 9,
+        "h": 12,
+        "w": 12,
+        "x": 12,
         "y": 1
       },
       "id": 43,
@@ -350,12 +347,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${datasource}"
+            "uid": "$datasource"
           },
-          "editorMode": "code",
-          "expr": "rate(bee_localstore_reserve_size{}[5m])",
-          "legendFormat": "{{pod}}",
-          "range": true,
+          "exemplar": true,
+          "expr": "bee_localstore_reserve_size{namespace=~\"$namespace\", instance=~\"$instance\"} * 4096",
+          "interval": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -464,12 +461,16 @@
       }
     },
     {
-      "datasource": "$datasource",
+      "collapsed": false,
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 13
       },
       "id": 42,
       "panels": [],
@@ -551,7 +552,7 @@
         "h": 13,
         "w": 9,
         "x": 0,
-        "y": 28
+        "y": 14
       },
       "id": 46,
       "options": {
@@ -793,12 +794,16 @@
     },
     {
       "collapsed": true,
-      "datasource": "$datasource",
+      "collapsed": false,
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 27
       },
       "id": 29,
       "panels": [
@@ -1213,8 +1218,375 @@
       "type": "row"
     },
     {
-      "collapsed": true,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineWidth": 3,
+            "pointSize": 13,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 28
+      },
+      "id": 31,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "increase(bee_localstore_get_chunk_time{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])/increase(bee_localstore_mode_get_count{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])",
+          "interval": "",
+          "legendFormat": "time per chunk",
+          "refId": "A"
+        }
+      ],
+      "title": "GET time (avg/ch)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineWidth": 3,
+            "pointSize": 13,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 28
+      },
+      "id": 33,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "increase(bee_localstore_has_time{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])/increase(bee_localstore_mode_has_count{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])",
+          "interval": "",
+          "legendFormat": "time per chunk",
+          "refId": "A"
+        }
+      ],
+      "title": "HAS time (avg/ch)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineWidth": 3,
+            "pointSize": 13,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "id": 34,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "increase(bee_localstore_set_time{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])/increase(bee_localstore_mode_set_count{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])",
+          "interval": "",
+          "legendFormat": "time per chunk",
+          "refId": "A"
+        }
+      ],
+      "title": "SET time (avg/ch)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineWidth": 3,
+            "pointSize": 13,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 32,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "increase(bee_localstore_put_time{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])/increase(bee_localstore_mode_put_count{instance=~\"$instance\",namespace=~\"$namespace\"}[1m])",
+          "interval": "",
+          "legendFormat": "time per chunk",
+          "refId": "A"
+        }
+      ],
+      "title": "PUT time (avg/ch)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1222,7 +1594,8 @@
         "y": 52
       },
       "id": 27,
-      "panels": [
+      "panels": [],
+      "targets": [
         {
           "aliasColors": {},
           "bars": false,
@@ -1447,8 +1820,200 @@
       "type": "row"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 3,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 22,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.0.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "expr": "increase(bee_localstore_subscribe_pull_count{namespace=~\"$namespace\", instance=~\"$instance\"}[1m])",
+          "interval": "",
+          "legendFormat": "blocklisted_peers({{instance}})",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "subscribe pull count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:91",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:92",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 3,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 21,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.0.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "expr": "increase(bee_localstore_subscribe_push_count{namespace=~\"$namespace\", instance=~\"$instance\"}[1m])",
+          "interval": "",
+          "legendFormat": "count({{instance}})",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "subscribe push count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:91",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:92",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1483,7 +2048,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1587,7 +2155,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1690,7 +2261,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1793,7 +2367,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1915,7 +2492,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2009,7 +2589,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2112,7 +2695,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2233,7 +2819,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -2335,7 +2924,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2435,7 +3027,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2572,7 +3167,10 @@
       }
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2673,7 +3271,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2774,7 +3375,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2875,7 +3479,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2999,7 +3606,10 @@
       "type": "row"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3097,6 +3707,9 @@
     },
     {
       "datasource": "$datasource",
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3145,6 +3758,8 @@
               }
             ]
           }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
@@ -3194,6 +3809,9 @@
     },
     {
       "datasource": "$datasource",
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3291,6 +3909,9 @@
     },
     {
       "datasource": "$datasource",
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3387,7 +4008,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3485,6 +4109,9 @@
     },
     {
       "datasource": "$datasource",
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3582,6 +4209,9 @@
     },
     {
       "datasource": "$datasource",
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3678,7 +4308,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3783,7 +4416,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "bee-storage",
           "value": "bee-storage"
         },
@@ -3859,7 +4492,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {

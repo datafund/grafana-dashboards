@@ -8,7 +8,16 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations \u0026 Alerts",
-        "type": "dashboard"
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        }
       }
     ]
   },
@@ -33,6 +42,15 @@
       },
       "id": 53,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Headlines",
       "type": "row"
     },
@@ -79,9 +97,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_libp2p_created_connection_count{namespace=\"$namespace\"})/count(bee_libp2p_created_connection_count{namespace=\"$namespace\"})",
           "interval": "",
           "legendFormat": "",
@@ -93,6 +115,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -134,9 +157,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_libp2p_handled_connection_count{namespace=\"$namespace\"})/count(bee_libp2p_handled_connection_count{namespace=\"$namespace\"})",
           "interval": "",
           "legendFormat": "",
@@ -148,6 +175,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -203,9 +231,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(time() - bee_process_start_time_seconds{namespace=\"$namespace\"})/count(bee_process_start_time_seconds{namespace=\"$namespace\"})",
           "instant": false,
           "interval": "",
@@ -218,6 +250,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -274,9 +307,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(kube_pod_container_status_restarts_total{namespace=\"$namespace\", container=\"bee\"})/count(kube_pod_container_status_restarts_total{namespace=\"$namespace\", container=\"bee\"})",
           "interval": "",
           "legendFormat": "",
@@ -347,7 +384,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "targets": [
         {
           "datasource": {
@@ -425,7 +462,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "targets": [
         {
           "datasource": {
@@ -455,6 +492,15 @@
       },
       "id": 56,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Logs",
       "type": "row"
     },
@@ -464,6 +510,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -500,7 +547,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -510,6 +557,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "increase(bee_log_error_count{namespace=\"$namespace\"}[1h])",
           "instant": false,
           "interval": "",
@@ -552,6 +603,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -561,7 +613,8 @@
           },
           "custom": {
             "displayMode": "auto",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "links": [],
           "mappings": [],
@@ -599,10 +652,14 @@
           }
         ]
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "repeatDirection": "h",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_log_trace_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "instant": true,
@@ -612,6 +669,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_log_debug_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -622,6 +683,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_log_info_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -632,6 +697,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_log_warn_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -642,6 +711,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_log_error_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -686,6 +759,7 @@
     {
       "collapsed": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "gridPos": {
@@ -696,6 +770,15 @@
       },
       "id": 61,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Resources",
       "type": "row"
     },
@@ -1295,10 +1378,19 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 23
       },
       "id": 4,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "API",
       "type": "row"
     },
@@ -1308,6 +1400,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1322,7 +1415,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 2,
@@ -1344,7 +1437,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1354,7 +1447,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(bee_api_request_count{namespace=\"$namespace\"}[1h])",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "expr": "increase(bee_api_request_count{namespace=\"$namespace\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -1363,7 +1460,7 @@
       ],
       "thresholds": [],
       "timeRegions": [],
-      "title": "api requests increase over 1h",
+      "title": "api requests increase over 1m",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -1393,6 +1490,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1402,7 +1500,8 @@
           },
           "custom": {
             "displayMode": "auto",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "links": [],
           "mappings": [],
@@ -1422,22 +1521,28 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 32
       },
       "id": 57,
       "options": {
         "footer": {
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "frameIndex": 1,
         "showHeader": true
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "repeatDirection": "h",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "exemplar": false,
           "expr": "sum(bee_api_response_duration_seconds_sum{namespace=\"$namespace\"}) by (pod) / sum(bee_api_response_duration_seconds_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
@@ -1449,6 +1554,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(bee_api_request_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -1499,16 +1608,26 @@
     {
       "collapsed": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 40
       },
       "id": 25,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Storage",
       "type": "row"
     },
@@ -1737,10 +1856,19 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 89
+        "y": 41
       },
       "id": 19,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Runtime",
       "type": "row"
     },
@@ -1750,6 +1878,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1769,7 +1898,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 90
+        "y": 42
       },
       "hiddenSeries": false,
       "id": 20,
@@ -1791,7 +1920,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1801,6 +1930,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "increase(go_goroutines{namespace=\"$namespace\"}[1h])",
           "instant": false,
           "interval": "",
@@ -1847,6 +1980,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1866,7 +2000,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 98
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 22,
@@ -1888,7 +2022,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1898,6 +2032,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "increase(go_memstats_gc_cpu_fraction{namespace=\"$namespace\"}[1h])",
           "interval": "",
           "intervalFactor": 2,
@@ -1939,6 +2077,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1948,7 +2087,8 @@
           },
           "custom": {
             "displayMode": "auto",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "links": [],
           "mappings": [],
@@ -1986,13 +2126,15 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 106
+        "y": 58
       },
       "id": 59,
       "options": {
         "footer": {
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "frameIndex": 1,
@@ -2004,10 +2146,14 @@
           }
         ]
       },
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.0.1",
       "repeatDirection": "h",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(go_goroutines{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "instant": true,
@@ -2017,6 +2163,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(go_memstats_gc_cpu_fraction{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -2027,6 +2177,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
           "expr": "sum(go_gc_duration_seconds_count{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
           "hide": false,
@@ -2071,16 +2225,26 @@
     {
       "collapsed": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 114
+        "y": 66
       },
       "id": 30,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Accounting",
       "type": "row"
     },
@@ -2434,10 +2598,19 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 139
+        "y": 67
       },
       "id": 48,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Retrieval",
       "type": "row"
     },
@@ -2645,6 +2818,10 @@
   ],
   "refresh": false,
   "schemaVersion": 35,
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": ["components"],
   "templating": {
@@ -2700,7 +2877,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {

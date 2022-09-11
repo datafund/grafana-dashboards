@@ -227,7 +227,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PEB8F6B0BE743FB7E"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "bee_batchstore_storage_radius{namespace=~\"$namespace\", instance=~\"$instance\"}",
@@ -481,7 +481,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -567,7 +567,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PEB8F6B0BE743FB7E"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "bee_batchstore_storage_radius{namespace=~\"$namespace\", instance=~\"$instance\"}",

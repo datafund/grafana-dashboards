@@ -21,7 +21,8 @@
       },
       {
         "datasource": {
-          "uid": "$datasource"
+          "uid": "$datasource",
+          "type": "prometheus"
         },
         "enable": true,
         "expr": "changes(bee_process_start_time_seconds{namespace=\"$namespace\",instance=\"$instance\"}[1m:10s]) \u003e 0",
@@ -106,13 +107,29 @@
       "targets": [
         {
           "datasource": {
-            "uid": "$datasource"
+            "uid": "$datasource",
+            "type": "prometheus"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "increase(bee_retrieval_peer_request_count{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "attempts {{instance}}",
+          "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "editorMode": "code",
+          "expr": "increase(bee_retrieval_total_errors{namespace=~\"$namespace\",instance=~\"$instance\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "errors {{instance}}",
+          "range": true,
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -208,7 +225,8 @@
       "targets": [
         {
           "datasource": {
-            "uid": "$datasource"
+            "uid": "$datasource",
+            "type": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(bee_retrieval_peer_request_count{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
@@ -310,7 +328,8 @@
       "targets": [
         {
           "datasource": {
-            "uid": "$datasource"
+            "uid": "$datasource",
+            "type": "prometheus"
           },
           "exemplar": true,
           "expr": "increase(bee_retrieval_total_retrieved{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
@@ -412,7 +431,8 @@
       "targets": [
         {
           "datasource": {
-            "uid": "$datasource"
+            "uid": "$datasource",
+            "type": "prometheus"
           },
           "exemplar": true,
           "expr": "rate(bee_retrieval_total_retrieved{namespace=~\"$namespace\",instance=~\"$instance\"}[5m])",
@@ -454,7 +474,7 @@
       }
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 36,
   "style": "dark",
   "tags": ["protocols"],
@@ -463,8 +483,8 @@
       {
         "current": {
           "selected": true,
-          "text": "bee-bootnode",
-          "value": "bee-bootnode"
+          "text": "bee-storage",
+          "value": "bee-storage"
         },
         "datasource": {
           "uid": "$datasource"
@@ -492,12 +512,13 @@
       {
         "allValue": ".+",
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "All",
           "value": "$__all"
         },
         "datasource": {
-          "uid": "$datasource"
+          "uid": "$datasource",
+          "type": "prometheus"
         },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
         "hide": 0,
@@ -538,7 +559,7 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {

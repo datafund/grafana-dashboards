@@ -20,10 +20,9 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 1,
-  "id": 6,
-  "iteration": 1638448724880,
+  "id": 8,
+  "iteration": 1653413974304,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -52,7 +51,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -65,8 +64,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false,
+            "showPoints": "never",
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -84,8 +83,8 @@
                 "value": null
               },
               {
-                "color": "semi-dark-red",
-                "value": 0.1
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -107,21 +106,20 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi",
+          "sort": "none"
         }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bee_check_smoke_data_upload_duration_sum{job=\"$job\"}/bee_check_smoke_data_upload_duration_count{job=\"$job\"}",
+          "expr": "beekeeper_check_smoke_data_upload_duration_sum{job=\"$job\"}/beekeeper_check_smoke_data_upload_duration_count{job=\"$job\"}",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Average Upload Duration",
       "type": "timeseries"
     },
@@ -138,7 +136,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -151,8 +149,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false,
+            "showPoints": "never",
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -170,8 +168,8 @@
                 "value": null
               },
               {
-                "color": "semi-dark-red",
-                "value": 0.1
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -193,355 +191,22 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi",
+          "sort": "none"
         }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bee_check_smoke_data_download_duration_sum{job=\"$job\"}/bee_check_smoke_data_download_duration_count{job=\"$job\"}",
+          "expr": "beekeeper_check_smoke_data_download_duration_sum{job=\"$job\"}/beekeeper_check_smoke_data_download_duration_count{job=\"$job\"}",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Average Download Duration",
       "type": "timeseries"
-    },
-    {
-      "datasource": "$datasource",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 0.1
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 8,
-        "y": 1
-      },
-      "id": 77,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.2.1",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "bee_check_smoke_data_upload_duration_count{job=\"$job\"}*5e6",
-          "interval": "",
-          "legendFormat": "{{job}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Uploaded data (this run)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": "$datasource",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 0.1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 2,
-        "x": 12,
-        "y": 1
-      },
-      "id": 60,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.1",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "bee_check_smoke_upload_errors_count{job=\"$job\"}",
-          "interval": "",
-          "legendFormat": "{{job}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Upload Errors",
-      "type": "stat"
-    },
-    {
-      "datasource": "$datasource",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 0.1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 2,
-        "x": 14,
-        "y": 1
-      },
-      "id": 76,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.1",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "bee_check_smoke_download_errors_count{job=\"$job\"}",
-          "interval": "",
-          "legendFormat": "{{job}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Download Errors",
-      "type": "stat"
-    },
-    {
-      "datasource": "$datasource",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 16,
-        "y": 1
-      },
-      "id": 68,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.1",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "5e6/(increase(bee_check_smoke_data_upload_duration_sum{job=\"$job\"}[5m])/increase(bee_check_smoke_data_upload_duration_count{job=\"$job\"}[5m]))",
-          "format": "time_series",
-          "interval": "",
-          "legendFormat": "{{job}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Upload Speed (momentary 1m)",
-      "type": "stat"
-    },
-    {
-      "datasource": "$datasource",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 1
-      },
-      "id": 74,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.1",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "5e6/(bee_check_smoke_data_upload_duration_sum{job=\"$job\"}/bee_check_smoke_data_upload_duration_count{job=\"$job\"})",
-          "format": "time_series",
-          "interval": "",
-          "legendFormat": "{{job}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Upload Speed",
-      "type": "stat"
     },
     {
       "datasource": "$datasource",
@@ -566,10 +231,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 8,
         "w": 4,
-        "x": 12,
-        "y": 5
+        "x": 8,
+        "y": 1
       },
       "id": 65,
       "options": {
@@ -585,18 +250,16 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "bee_check_smoke_data_upload_duration_count{job=\"$job\"}*5e6",
+          "expr": "beekeeper_check_smoke_data_upload_duration_count{job=\"$job\"}*5e6",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Uploaded data (this smoke test run only!)",
       "type": "gauge"
     },
@@ -624,11 +287,11 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
-        "x": 16,
-        "y": 5
+        "w": 3,
+        "x": 12,
+        "y": 1
       },
-      "id": 75,
+      "id": 74,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -644,20 +307,217 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "5e6/(increase(bee_check_smoke_data_download_duration_sum{job=\"$job\"}[5m])/increase(bee_check_smoke_data_download_duration_count{job=\"$job\"}[5m]))",
+          "expr": "5e6/(beekeeper_check_smoke_data_upload_duration_sum{job=\"$job\"}/beekeeper_check_smoke_data_upload_duration_count{job=\"$job\"})",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Download Speed (momentary 1m)",
+      "title": "Average Upload Speed",
+      "type": "stat"
+    },
+    {
+      "datasource": "$datasource",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 15,
+        "y": 1
+      },
+      "id": 78,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "beekeeper_check_smoke_upload_attempts{job=\"$job\"} ",
+          "interval": "",
+          "legendFormat": "{{job}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Upload Attempts",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 0.25
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 18,
+        "y": 1
+      },
+      "id": 60,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "beekeeper_check_smoke_upload_errors_count{job=\"$job\"} / beekeeper_check_smoke_upload_attempts{job=\"$job\"} ",
+          "interval": "",
+          "legendFormat": "{{job}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Upload Errors %",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 21,
+        "y": 1
+      },
+      "id": 83,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "beekeeper_check_smoke_download_mismatch{job=\"$job\"} ",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{job}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Data Mismatch",
       "type": "stat"
     },
     {
@@ -684,8 +544,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
-        "x": 20,
+        "w": 3,
+        "x": 12,
         "y": 5
       },
       "id": 70,
@@ -704,21 +564,158 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "5e6/(bee_check_smoke_data_download_duration_sum{job=\"$job\"}/bee_check_smoke_data_download_duration_count{job=\"$job\"})",
+          "expr": "5e6/(beekeeper_check_smoke_data_download_duration_sum{job=\"$job\"}/beekeeper_check_smoke_data_download_duration_count{job=\"$job\"})",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Average Download Speed",
       "type": "stat"
+    },
+    {
+      "datasource": "$datasource",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 15,
+        "y": 5
+      },
+      "id": 79,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "beekeeper_check_smoke_download_attempts{job=\"$job\"} ",
+          "interval": "",
+          "legendFormat": "{{job}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Download Attempts",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 0.25
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 18,
+        "y": 5
+      },
+      "id": 82,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.2",
+      "targets": [
+        {
+          "datasource": "$datasource",
+          "exemplar": true,
+          "expr": "beekeeper_check_smoke_download_errors_count{job=\"$job\"} / beekeeper_check_smoke_download_attempts{job=\"$job\"} ",
+          "interval": "",
+          "legendFormat": "{{job}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Download Errors %",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 81,
+      "panels": [],
+      "title": "Speed",
+      "type": "row"
     },
     {
       "datasource": "$datasource",
@@ -733,7 +730,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -746,8 +743,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false,
+            "showPoints": "never",
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -763,6 +760,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -774,7 +775,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 71,
       "options": {
@@ -784,22 +785,21 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi",
+          "sort": "none"
         }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "5e6/(increase(bee_check_smoke_data_upload_duration_sum{job=\"$job\"}[5m])/increase(bee_check_smoke_data_upload_duration_count{job=\"$job\"}[5m]))",
+          "expr": "5e6/(increase(beekeeper_check_smoke_data_upload_duration_sum{job=\"$job\"}[5m])/increase(beekeeper_check_smoke_data_upload_duration_count{job=\"$job\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Average Upload Speed",
       "type": "timeseries"
     },
@@ -816,7 +816,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -829,8 +829,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false,
+            "showPoints": "never",
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -846,6 +846,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -857,90 +861,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 9
-      },
-      "id": 72,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.2.1",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "5e6/(increase(bee_check_smoke_data_download_duration_sum{job=\"$job\"}[5m])/increase(bee_check_smoke_data_download_duration_count{job=\"$job\"}[5m]))",
-          "format": "time_series",
-          "interval": "",
-          "legendFormat": "{{job}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Download Speed",
-      "type": "timeseries"
-    },
-    {
-      "datasource": "$datasource",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 0,
-        "y": 19
+        "y": 10
       },
       "id": 73,
       "options": {
@@ -950,22 +871,21 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi",
+          "sort": "none"
         }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "5e6/(bee_check_smoke_data_upload_duration_sum{job=\"$job\"}/bee_check_smoke_data_upload_duration_count{job=\"$job\"})",
+          "expr": "5e6/(beekeeper_check_smoke_data_upload_duration_sum{job=\"$job\"}/beekeeper_check_smoke_data_upload_duration_count{job=\"$job\"})",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Average Upload Speed (alltime average)",
       "type": "timeseries"
     },
@@ -982,7 +902,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -995,8 +915,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false,
+            "showPoints": "never",
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1012,6 +932,96 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "binBps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 20
+      },
+      "id": 72,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.4.2",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "5e6/(increase(beekeeper_check_smoke_data_download_duration_sum{job=\"$job\"}[5m])/increase(beekeeper_check_smoke_data_download_duration_count{job=\"$job\"}[5m]))",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "{{job}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Average Download Speed",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "$datasource",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -1023,7 +1033,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 20
       },
       "id": 69,
       "options": {
@@ -1033,28 +1043,27 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi",
+          "sort": "none"
         }
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "5e6/(bee_check_smoke_data_download_duration_sum{job=\"$job\"}/bee_check_smoke_data_download_duration_count{job=\"$job\"})",
+          "expr": "5e6/(beekeeper_check_smoke_data_download_duration_sum{job=\"$job\"}/beekeeper_check_smoke_data_download_duration_count{job=\"$job\"})",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Average Download Speed (alltime average)",
       "type": "timeseries"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 31,
+  "refresh": "30s",
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "beekeeper"
@@ -1062,16 +1071,13 @@
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
-          "selected": true,
-          "text": "beekeeper",
-          "value": "beekeeper"
+          "selected": false,
+          "text": "dev-bee-gateway",
+          "value": "dev-bee-gateway"
         },
         "datasource": "$datasource",
         "definition": "label_values(push_time_seconds, job)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Namespace",

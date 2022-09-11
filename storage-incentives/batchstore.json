@@ -36,8 +36,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 28,
-  "iteration": 1639500296420,
+  "id": 34,
+  "iteration": 1653413877332,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -76,7 +76,7 @@
       },
       "gridPos": {
         "h": 9,
-        "w": 6,
+        "w": 13,
         "x": 0,
         "y": 0
       },
@@ -162,7 +162,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
@@ -210,8 +210,8 @@
       },
       "gridPos": {
         "h": 9,
-        "w": 6,
-        "x": 12,
+        "w": 11,
+        "x": 13,
         "y": 0
       },
       "id": 60,
@@ -228,12 +228,12 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PEB8F6B0BE743FB7E"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "bee_batchstore_storage_radius{namespace=~\"$namespace\", instance=~\"$instance\"}",
@@ -248,9 +248,8 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
+        "uid": "$datasource"
       },
-      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -418,9 +417,9 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 6,
+        "h": 9,
+        "w": 13,
+        "x": 0,
         "y": 9
       },
       "hiddenSeries": false,
@@ -441,7 +440,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -493,7 +492,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PEB8F6B0BE743FB7E"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -558,9 +557,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 12,
+        "h": 9,
+        "w": 11,
+        "x": 13,
         "y": 9
       },
       "id": 61,
@@ -571,7 +570,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.1",
@@ -579,7 +579,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PEB8F6B0BE743FB7E"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "bee_batchstore_storage_radius{namespace=~\"$namespace\", instance=~\"$instance\"}",
@@ -689,7 +689,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 33,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "storage-incentives"
@@ -698,13 +698,13 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "bee-bootnode",
           "value": "bee-bootnode"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "PEB8F6B0BE743FB7E"
+          "uid": "$datasource"
         },
         "datasource": "$datasource",
         "definition": "label_values(bee_info, namespace)",
@@ -795,6 +795,6 @@
   "timezone": "",
   "title": "Batch store",
   "uid": "Iiui3ERnk",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }

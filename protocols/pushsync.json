@@ -47,7 +47,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "uid": "$datasource"
+        "uid": "$datasource",
+        "type": "prometheus"
       },
       "gridPos": {
         "h": 1,
@@ -70,6 +71,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -158,6 +160,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -250,7 +253,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "Prometheus"
+        "type": "prometheus",
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -350,7 +354,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "Prometheus"
+        "type": "prometheus",
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -452,6 +457,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "",
@@ -555,6 +561,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "",
@@ -650,6 +657,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -738,6 +746,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -826,6 +835,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "",
@@ -917,7 +927,8 @@
     },
     {
       "datasource": {
-        "uid": "Prometheus"
+        "type": "prometheus",
+        "uid": "$datasource"
       },
       "description": "",
       "fieldConfig": {
@@ -959,7 +970,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["mean"],
+          "calcs": [
+            "last"
+          ],
           "fields": "",
           "values": false
         },
@@ -987,6 +1000,7 @@
     {
       "collapsed": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "gridPos": {
@@ -1016,6 +1030,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "",
@@ -1119,6 +1134,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "",
@@ -1220,6 +1236,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1327,6 +1344,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1415,6 +1433,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1503,6 +1522,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1591,6 +1611,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "fieldConfig": {
@@ -1649,6 +1670,75 @@
         "x": 6,
         "y": 66
       },
+      "id": 90,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "8.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "bee_pushsync_handler_replication{namespace=~\"$namespace\", instance=~\"$instance\"} / bee_pushsync_total_received{namespace=~\"$namespace\", instance=~\"$instance\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Replication %",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 12,
+        "y": 66
+      },
       "id": 74,
       "options": {
         "legend": {
@@ -1686,11 +1776,12 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "bee-gateway",
           "value": "bee-gateway"
         },
         "datasource": {
+          "type": "prometheus",
           "uid": "$datasource"
         },
         "definition": "label_values(bee_info, namespace)",
@@ -1721,6 +1812,7 @@
           "value": "$__all"
         },
         "datasource": {
+          "type": "prometheus",
           "uid": "$datasource"
         },
         "definition": "label_values(bee_info{namespace=\"$namespace\"}, instance)",
