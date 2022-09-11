@@ -195,17 +195,6 @@
         "targets": [
           {
             "datasource": "$datasource",
-              "0": "P",
-              "1": "r",
-              "2": "o",
-              "3": "m",
-              "4": "e",
-              "5": "t",
-              "6": "h",
-              "7": "e",
-              "8": "u",
-              "9": "s"
-            },
             "editorMode": "code",
             "exemplar": true,
             "expr": "kubelet_volume_stats_used_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"localstore-$instance\"}/kubelet_volume_stats_capacity_bytes{namespace=\"$namespace\", persistentvolumeclaim=~\"localstore-$instance\"}",
@@ -305,17 +294,18 @@
         "pluginVersion": "9.0.1",
         "targets": [
           {
-            "datasource": "$datasource",
-              "0": "P",
-              "1": "r",
-              "2": "o",
-              "3": "m",
-              "4": "e",
-              "5": "t",
-              "6": "h",
-              "7": "e",
-              "8": "u",
-              "9": "s"
+            "datasource": {
+              "0": "$",
+              "1": "d",
+              "10": "e",
+              "2": "a",
+              "3": "t",
+              "4": "a",
+              "5": "s",
+              "6": "o",
+              "7": "u",
+              "8": "r",
+              "9": "c"
             },
             "editorMode": "code",
             "exemplar": true,

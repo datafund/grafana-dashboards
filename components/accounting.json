@@ -99,8 +99,6 @@
       "targets": [
         {
           "datasource": "$datasource",
-            "uid": "$datasource"
-          },
           "expr": "increase(bee_accounting_credit_events_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "credit ({{pod}})",
@@ -108,8 +106,6 @@
         },
         {
           "datasource": "$datasource",
-            "uid": "$datasource"
-          },
           "expr": "increase(bee_accounting_debit_events_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "debit ({{pod}})",
@@ -196,8 +192,6 @@
       "targets": [
         {
           "datasource": "$datasource",
-            "uid": "$datasource"
-          },
           "exemplar": true,
           "expr": "bee_accounting_total_credited_amount{namespace=\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -206,8 +200,6 @@
         },
         {
           "datasource": "$datasource",
-            "uid": "$datasource"
-          },
           "exemplar": true,
           "expr": "bee_accounting_total_debited_amount{namespace=\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
@@ -217,6 +209,7 @@
       ],
       "title": "totals",
       "type": "table"
+      }
     },
     {
       "aliasColors": {},
@@ -267,8 +260,6 @@
       "targets": [
         {
           "datasource": "$datasource",
-            "uid": "$datasource"
-          },
           "expr": "bee_swap_available_balance{namespace=\"$namespace\", instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -361,8 +352,6 @@
       "targets": [
         {
           "datasource": "$datasource",
-            "uid": "$datasource"
-          },
           "expr": "increase(bee_accounting_accounting_blocks_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "blocks ({{pod}})",
@@ -370,8 +359,6 @@
         },
         {
           "datasource": "$datasource",
-            "uid": "$datasource"
-          },
           "expr": "increase(bee_accounting_accounting_disconnects_count{namespace=\"$namespace\", instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "disconnects ({{pod}})",

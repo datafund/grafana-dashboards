@@ -2817,10 +2817,6 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 35,
-    }
-  ],
-  "refresh": false,
   "schemaVersion": 36,
   "style": "dark",
   "tags": ["components"],

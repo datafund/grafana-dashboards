@@ -3706,7 +3706,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
           "type": "prometheus",
           "uid": "$datasource"
       },
@@ -3763,6 +3763,7 @@
         },
         "overrides": []
       },
+      {
       "gridPos": {
         "h": 6,
         "w": 12,
@@ -3808,7 +3809,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
           "type": "prometheus",
           "uid": "$datasource"
       },
@@ -3908,7 +3909,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
           "type": "prometheus",
           "uid": "$datasource"
       },
@@ -4108,7 +4109,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
           "type": "prometheus",
           "uid": "$datasource"
       },
@@ -4208,7 +4209,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "$datasource",
+      "datasource": {
           "type": "prometheus",
           "uid": "$datasource"
       },
